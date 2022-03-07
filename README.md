@@ -24,16 +24,16 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 Please clone this project and modify it. Once you finish, send us your cloned repo so we can review it.
 
-We need to build a page for different users. New users will be created very often, so we initially require
-you to build a page using Nextjs and its `dynamic routes`.
+We need to implement an API function and reusable components for nicely rendering the users data
 
-There's already a dynamic route (also known as slugs) on:
+There's already an API folder and file set up for the API fetch with more instructions inside
+this is the apis/get-all-users folder
 
-```
-/pages/user/[user_name].tsx
-```
+One component has already been created for a basic button that triggers an alert. This button
+will need to trigger the api function this is the components/button folder
 
-That page needs to check an API which returns a list of current users on our Backend.
+We use custom css modules, this helps keep the css files small and easy to manage
+an example of this can be seen in the button component
 
 The API is:
 
@@ -94,115 +94,73 @@ This is a sample response from the endpoint:
 ]
 ```
 
-You're being asked to add functionality to `[user_name].tsx` with the following requirements:
+You're being asked to add functionality to `index.tsx` file with the following requirements:
 
-- Users will visit the following url `http://localhost:3000/user/[username]`
-- `[username]` can be ANY name. i.e., `http://localhost:3000/user/john`, `http://localhost:3000/user/bret`
-- You will need to verify if `[username]` exists on the API response.
-  - (please validate the existence of `[username]` against the `username` attribute on the API response object)
-- You should return a message with the `[username]`, and text indicating if the user exists on the API response or not.
-  - If the user does not exist this will result in a 404 error on NextJs which automatically routes to the 404 page
+- Users data may be updated regularly so when someone visits this page the api needs to be fetched on user request
+- Because there is alot of data in the users object we need a nice way to display the important information for each user
+  - user: name, phone, email, website, company: name, catchPhrase, bs
+- Please use the button to fetch the data when clicked using react hooks to update the view when a response is received
+- Please create cards for each user displaying the information outlined above
+  - The display should be 3 cards wide and as many deep as users there are in the response
+  - Header for each card is the name of the user
+  - The information in the card is the users company data
+  - The footer for the card is the users email, phone & website
 
-**IMPORTANT:** the API returns a lot of data. The attribute you need to validate is `username`.
-ie:
+## Implement A nice looking button
 
-```json
-{
-  "id": 2,
-  "name": "...",
-  "username": "THIS_IS_THE_NAME_YOU_NEED_TO_CHECK",
-  "email": "...",
-  "address": {
-    "street": "...",
-    "suite": "...",
-    "city": "...",
-    "zipcode": "...",
-    "geo": {
-      "lat": "...",
-      "lng": "..."
-    }
-  },
-  "phone": "...",
-  "website": "...",
-  "company": {
-    "name": "...",
-    "catchPhrase": "...",
-    "bs": "..."
-  }
-}
-```
+Implement a button with rounded corners, black text and a gradient background colour starting with #63CBF8 blending into #53E9B2
 
-Take a look at `[user_name].tsx` and there will be more instructions... you can follow the instructions or ignore them if you
-think there is a more elegant solution for what you are trying to achieve.
+## Implement A User Card
 
-## Implement A User Details Card
-
-Screen width: 0 - 599px  
-User details margin left: 2rem  
-User details margin right: 2rem
+Full screen width: 3 cards
+Fixed margin left: 15rem
+Fixed margin right 15rem
+Card margin left: 2rem  
+Card margin right: 2rem
+Card margin top (first 3 cards): 3rem
+Card margin bottom: 5rem
 
 ```
-┌───────────────────────────┐
-│                           │
-│                           │
-│   User Details:           │
-│  ┌─────────────────────┐  │
-│  │                     │  │
-│  │  Name:              │  │
-│  │  Leanne Graham      │  │
-│  │                     │  │
-│  │  Email:             │  │
-│  │  Sincere@april.biz  │  │
-│  │                     │  │
-│  │                     │  │
-│  │  Website:           │  │
-│  │  hildegard.org      │  │
-│  │                     │  │
-│  └─────────────────────┘  │
-│                           │
-│                           │
-└───────────────────────────┘
+┌────────────────────────────────────┐
+│                                    │
+│                                    │
+│   Leanne Graham                    │
+│  ┌──────────────────────────────┐  │
+│  │                              │  │
+│  │  Company Name:               │  │
+│  │  Romaguera-Crona             │  │
+│  │                              │  │
+│  │  Compnay Catch phrase:       │  │
+│  │  Sincere@april.biz           │  │
+│  │                              │  │
+│  │  Company Bs:                 │  │
+│  │  harness real-time e-markets │  │
+│  │                              │  │
+│  └──────────────────────────────┘  │
+│                                    │
+│   Phone: 1-770-736-8031 x56442     │
+│   Email: Sincere@april.biz         │
+│   Website: hildegard.org           │
+└────────────────────────────────────┘
 ```
 
-Screen width: 600px - infinite  
-User details width: 30rem  
-User details is horizontal centered  
-Bonus: User details is vertical centered
+## Implement a stylish looking card
 
-```
-┌──────────────────────────────────────────────┐
-│                                              │
-│                                              │
-│        User Details:                         │
-│       ┌──────────────────────────────┐       │
-│       │                              │       │
-│       │  Name:    Leanne Graham      │       │
-│       │                              │       │
-│       │  Email:   Sincere@april.biz  │       │
-│       │                              │       │
-│       │                              │       │
-│       │  Website: hildegard.org      │       │
-│       │                              │       │
-│       └──────────────────────────────┘       │
-│                                              │
-└──────────────────────────────────────────────┘
-```
+To do this once you have implemented a reusable card you can style this card using its css module
+Requirements:
 
-## Implement a stylish looking 404 page
+- Rounded corners: 8px
+- Background colour: #53E9B2
+- User name colour: black
+- All other text colour: white
 
-To do this you can edit the 404.tsx file and if the user does not exists the page will redirect to here where you can get creative and come up with a
-nice looking error page outlining the error (e.g. the user [username] does not exist)
+## Using Coding best practices Design Principles
+
+https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design
 
 ### Bonus Styling task
 
-At Vidzing one of our main products is live streams which are heavily reliant on time schedules. We require you to add a timeout feature of 5 seconds
-before displaying the response. During this timeout we would like to see a well styled custom loading animation/progress bar that displays in the browser.
-
-### Bonus Unit test task
-
-As you might already know, unit testing is always a great way of catching errors ourselves before real users do.
-Please implement your own unit testing for the [user_name].tsx file, and it's functionalities? This would include installing a test library of your choice
-and coding/mocking it however you see fit to best test your code.
+When each card is hovered over render the users username in the centre of the card without the card size being effected
 
 ## Questions
 
