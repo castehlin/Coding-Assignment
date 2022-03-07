@@ -162,10 +162,6 @@ https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-f
 
 When each card is hovered over render the users username in the centre of the card without the card size being effected
 
-## Questions
-
-????????
-
 ## That's It!
 
 Thank you for your time! I hope you found this test fun and productive.
