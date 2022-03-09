@@ -1,0 +1,8 @@
+.button {
+  width: 10rem;
+  font-size: 1.6rem;
+  border-radius: 5rem;
+  color: black;
+  background-color: #04aa6d;
+  background: linear-gradient(#53e9b2, transparent);
+}
