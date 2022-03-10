@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import style from './ApiCall.module.css'
+import styles from '../../styles/Button.module.css'
 
-const ApiCall = (props) => {
+const ApiCall = props => {
   const [apiCall, triggerApiCall] = useState(0)
 
   useEffect(() => {
@@ -19,15 +19,16 @@ const ApiCall = (props) => {
     fetchData()
   }, [apiCall])
 
-  const buttonEventListener = () => {
-    triggerApiCall(apiCall + 1)
-  }
-
   return (
-    <button className={style.button} onClick={() => buttonEventListener()}>
-      API call Button
+    <button
+      className={styles.apiButtonOne}
+      onClick={() => {
+        triggerApiCall(apiCall + 1)
+      }}
+    >
+      Api call button
     </button>
   )
 }
 
-export default ApiCall;
+export default ApiCall

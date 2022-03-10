@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import GridStyles from './GridStyles'
+import GridStyles from '../../styles/GridStyles'
 import { Grid, Card, CardHeader } from '@material-ui/core/'
 
 const useStyles = makeStyles(() => GridStyles)
