@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
-import ApiCall from '../apis/get-all-users/AllUsersApiCall'
+import AllUsersApiCall from '../apis/get-all-users/AllUsersApiCall'
 import CardGrid from '../components/grid/Grid'
 
 const Home = () => {
